@@ -5,6 +5,10 @@ test('can replace traditional functions', () => {
   // For 'fnMultiply', set it equal to a regular function
   // For 'arrowMultiply', set it equal to an arrow function
 
+  fnMultiply = function(num1, num2){
+    return num1 * num2
+  }
+
   expect(fnMultiply(5, 5)).toBe(arrowMultiply(5, 5))
 })
 

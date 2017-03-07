@@ -1,12 +1,14 @@
 test(`should be easier to determine whether a string includes another`, () => {
   const sentence = 'It was the best of times. It was the worst of times'
   // create a variable called `result` that is assigned to a call of sentence.includes
+  let result = sentence.includes('best of times')
   expect(result).toBe(true)
 })
 
 test(`should be easier to repeat a string`, () => {
   const repeated = 'abc123'
   // create a variable called `result` that is the result of repeating the string 4 times
+  let result = repeated.repeat(4)
   expect(result).toBe('abc123abc123abc123abc123')
 })
 
