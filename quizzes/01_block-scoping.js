@@ -36,6 +36,10 @@ function ifBlock() {
   return {x: x, y: y}
 }
 // log(ifBlock())
+// will be error message because block scoping + variable hoisting
+// defined within the block with const and let, so not defined for outside
+// unless use var for const and let
+// anything within a block, now will have its own scope, not just within a function
 
 function block() {
   // what is returned?
@@ -56,12 +60,16 @@ function scoped() {
   return x
 }
 // log(scoped())
+// shadowing in block scoping
+// in memory x within the block is different than x in the function
+// so returns 33
+// recommend not shadowing something within blocks because confusing
 
 function veryScoped() {
   // what is returned?
   let x = 23
   {
-    let x
+    let x // if comment this out, function would return 55
     {
       x = 55
     }

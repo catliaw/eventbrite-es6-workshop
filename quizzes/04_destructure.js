@@ -2,8 +2,11 @@ import log from './pretty-log'
 
 function getAverage() {
   // refactor with object destructuring
-  const obj = {x: 3.6, y: 7.8, z: 4.3}
-  return Math.floor((obj.x + obj.y + obj.z) / 3.0)
+  // const obj = {x: 3.6, y: 7.8, z: 4.3}
+  let {x, y, z} = obj
+
+  // return Math.floor((obj.x + obj.y + obj.z) / 3.0)
+  return Math.floor((x + y + z) / 3.0)
 }
 // log(getAverage())
 
@@ -15,11 +18,19 @@ function getAvgTemp() {
     today: {max: 2.6, min: -6.3},
     tomorrow: {max: 3.2, min: -5.8},
   }
-  const maxToday = weather.today.max
-  const minToday = weather.today.min
+  // const maxToday = weather.today.max
+  // const minToday = weather.today.min
+  let {max: maxToday, min: minToday} = weather.today
 
-  const maxTomorrow = weather.tomorrow.max
-  const minTomorrow = weather.tomorrow.min
+  // const maxTomorrow = weather.tomorrow.max
+  // const minTomorrow = weather.tomorrow.min
+  let {max: maxTomorrow, min: minTomorrow} = weather.tomorrow
+
+  // can do this but not advised (but can be good for parsing JSON):
+  // let {
+  //   today: {max: maxToday, min: minToday},
+  //   tomorrow: {max: maxTomorrow, min: minTomorrow}
+  // } = weather
 
   return {
     max: (maxToday + maxTomorrow) / 2.0,
@@ -32,8 +43,11 @@ function getAvgTemp() {
 function getFirstTwo() {
   // refactor with array destructuring
   const arr = [0, 1, 2, 3, 4, 5, 6, 7]
-  const firstItem = arr[0]
-  const secondItem = arr[1]
+
+  // const firstItem = arr[0]
+  // const secondItem = arr[1]
+  const [firstItem, secondItem] = arr
+  // like unpacking but for an array instead of an obect
 
   return {
     firstItem: firstItem,
@@ -46,9 +60,11 @@ function getElements() {
   // returns 1st, 2nd and last element from an array
   // refactor with skipped destructuring for arrays
   const arr = [0, 1, 2, 3, 4, 5, 6, 7]
-  const first = arr[0]
-  const second = arr[1]
-  const fifth = arr[4]
+  // const first = arr[0]
+  // const second = arr[1]
+  // const fifth = arr[4]
+  const [first, second, , , fifth] = arr
+  // empty commas for destructuring to skip items
 
   return {
     first: first,

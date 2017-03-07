@@ -7,10 +7,16 @@ function shorthandPropertyNames() {
   const green = Math.floor(Math.random() * 256)
   const blue = Math.floor(Math.random() * 256)
 
+  // return {
+  //   red: red,
+  //   green: green,
+  //   blue: blue,
+  // }
   return {
-    red: red,
-    green: green,
-    blue: blue,
+    red,
+    green,
+    blue: blue, // can still do this even if using shorthand on others
+    foo: 'bar' // can set another new key
   }
 }
 // log(shorthandPropertyNames())
@@ -77,8 +83,13 @@ function methodSuperCalls() {
 
 function computedPropertyNames() {
   function getCar(make, model) {
-    const car = {}
-    car[make.toLowerCase()] = model
+    // const car = {}
+    // car[make.toLowerCase()] = model
+    let car = {
+      [make.toLowerCase()] = model
+      // key in brackets because it's a variable and not a string
+      // if want the string "make" can just set as make = model
+    }
     return car
   }
   return getCar('Hyundai', 'Accent')

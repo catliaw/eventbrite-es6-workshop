@@ -3,18 +3,23 @@ import log from './pretty-log'
 function stringIncludes() {
   // refactor to String.includes
   const phrase = 'in the box'
-  return phrase.indexOf('the') !== -1
+  // return phrase.indexOf('the') !== -1
+  return phrase.includes('the')
 }
 // log(stringIncludes())
+// returns true
 
 function stringRepeat() {
   // refactor to String.repeat
   const repeatCount = 20
-  let marker = ''
-  for (let i = 0; i < repeatCount; i++) {
-    marker += '*'
-  }
-  return marker
+  // let marker = ''
+  // for (let i = 0; i < repeatCount; i++) {
+  //   marker += '*'
+  // }
+  // return marker
+
+  // how use .repeat()?
+  return "*".repeat(repeatCount)
 }
 // log(stringRepeat())
 

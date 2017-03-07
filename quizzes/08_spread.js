@@ -4,7 +4,8 @@ function spreadFunctionCall() {
   // TODO: return the maximum value in an array of integers
   // use spread operator and Math.max() in refactoring
   const arr = [5, 6, 8, 4, 9]
-  return Math.max.apply(null, arr)
+  // return Math.max.apply(null, arr)
+  return Math.max(...arr) // takes the array items and spreads out as individual parameters
 }
 // log(spreadFunctionCall())
 
@@ -39,14 +40,22 @@ function mergeObjects() {
     },
   }
   const obj2 = {
-    b: 'b from obj2',
-    c: 'c from obj2',
-    d: {
+    b: 'b from obj2', // overwrite from obj1
+    c: 'c from obj2', // overwrite from obj1
+    d: { // overwrite from obj1
       g: 'g from obj2',
       h: 'g from obj2',
     },
   }
-  return Object.assign({}, obj1, obj2)
+  // return Object.assign({}, obj1, obj2)
+  return {
+    ...obj1,
+    ...obj2
+  }
+  // .assign is ES6 but want to convert into spread for objs
+  // create a new obj {} the target obj
+  // overwrites the whole key when combine with obj2
+  // on surface merge, not a deep merge
 }
 // log(mergeObjects())
 
