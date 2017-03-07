@@ -31,10 +31,9 @@ test('cannot modify the value of a `const` variable', () => {
 test('is trapped inside of an `if` statement', () => {
   if (true) { // eslint-disable-line no-constant-condition
     // Change to `var` to `let`, so that b is scoped inside of the if-statement
-    let b = 1
-  }
-  // noop(b) in testing is like testing for b's value inside function outside if block
-  expect(() => noop(b)).toThrow('b is not defined')
+    let b = 1 // let --> b only exists in the if block, an error would be thrown correctly because b not defined in function scope, only in the if block scope
+  } // if use var b = 1 in the if statement, hoisting would create a b variable in the function scope, but would be assigned undefined, and the function would not throw an error
+  expect(() => noop(b)).toThrow('b is not defined') // noop(b) in testing is like testing for b's value inside function outside the if-block. if will throw an error if the function does NOT throw an error.
 })
 
 test(`can't redeclare using the same name`, () => {
