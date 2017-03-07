@@ -1,7 +1,10 @@
-const noop = () => {}
+const noop = () => {} // noop is not 'nupe' but 'no-op' like 'no-operation'
 test('can be used in place of `var`', () => {
   // Declare bandName using 'let'
   // Declare isBestBand using 'let'
+  let bandName = 'Queen'
+  let isBestBand = true
+
   expect(bandName).toBe('Queen')
   expect(isBestBand).toBe(true)
 })
@@ -11,7 +14,7 @@ test('can modify the value of a `let` variable even in the next block statement'
   {
     releaseName = 'ES2015'
   }
-  expect(releaseName).toBe(/* ENTER YOUR GUESS HERE */)
+  expect(releaseName).toBe('ES2015')
 })
 
 test('cannot modify the value of a `const` variable', () => {
@@ -19,7 +22,7 @@ test('cannot modify the value of a `const` variable', () => {
     // Pick your side. Do you call it ES6, or ES2015?
     // You cannot have `const` and reassign the value!
     const releaseName = 'ES6' // If you call it ES2015, then change this to let or var
-    releaseName = 'ES2015' // If you call it ES6, then remove this reassignment
+    // releaseName = 'ES2015' // If you call it ES6, then remove this reassignment
     return releaseName
   }
   expect(getReleaseName).not.toThrow()
@@ -28,8 +31,9 @@ test('cannot modify the value of a `const` variable', () => {
 test('is trapped inside of an `if` statement', () => {
   if (true) { // eslint-disable-line no-constant-condition
     // Change to `var` to `let`, so that b is scoped inside of the if-statement
-    var b = 1
+    let b = 1
   }
+  // noop(b) in testing is like testing for b's value inside function outside if block
   expect(() => noop(b)).toThrow('b is not defined')
 })
 
